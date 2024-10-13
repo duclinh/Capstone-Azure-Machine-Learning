@@ -27,7 +27,26 @@
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
 ## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
+## Defining a Model Training
+
+I use Logistric Regression algorithm from the SKLearn framework in conjuction with hyperDrive for hyperparameter tuning. There are two hyperparamters for this experiment, C and max_iter. C is the inverse regularization strength whereas max_iter is the maximum iteration to converge for the SKLearn Logistic Regression.
+
+## Defining the Hyperparamters tuning
+
+I use Logistric Regression algorithm from the SKLearn framework in conjuction with hyperDrive for hyperparameter tuning. There are two hyperparamters for this experiment, C and max_iter. 
+- **C** is the inverse regularization strength 
+- **max_iter** is the maximum iteration to converge for the SKLearn Logistic Regression.
+
+We have used random parameter sampling to sample over a discrete set of values. Random parameter sampling is great for discovery and getting hyperparameter combinations that you would not have guessed intuitively, although it often requires more time to execute.
+We have used random parameter sampling to sample over a discrete set of values. Random parameter sampling is great for discovery and getting hyperparameter combinations that you would not have guessed intuitively, although it often requires more time to execute.
+
+
+
+After that, I will define an early termnination policy. The BanditPolicy basically states to check the job every 1 iterations. If the primary metric (defined later) falls outside of the top 20% range, Azure ML terminate the job. This saves us from continuing to explore hyperparameters that don't show promise of helping reach our target metric.
+
+early_termination_policy = BanditPolicy(evaluation_interval=1, slack_factor=0.2)
+
+I'm ready to configure a run configuration object, and specify the primary metric validation_acc that's recorded in your training runs. I also set the number of samples to 50, and maximal concurrent job to 4, which is the same as the number of nodes in our computer cluster.
 
 
 ### Results

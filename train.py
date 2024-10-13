@@ -10,7 +10,7 @@ import pandas as pd
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
 
-data_loc = "https://github.com/duclinh/Capstone-Azure-Machine-Learning/blob/main/Datasets/adult.csv"
+data_loc = "https://raw.githubusercontent.com/khalidw/Capstone-Project-Azure-Machine-Learning-Engineer/master/divorce.csv"
 ds = TabularDatasetFactory.from_delimited_files(data_loc)
 
 
@@ -20,11 +20,11 @@ run = Run.get_context()
   
 x_df = ds.to_pandas_dataframe().dropna()
 
-y_df = x_df.pop("Target")
+y_df = x_df.pop("Class")
 
-# TODO: Split data into train and test sets. 80-20
+# TODO: Split data into train and test sets.
 
-x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=0)
+x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.3, random_state=123)
 
 def main():
     # Add arguments to script

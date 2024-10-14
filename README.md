@@ -2,24 +2,56 @@
 
 # Your Project Title Here
 
-*TODO:* Write a short introduction to your project.
+This project is the final capstone project of the Udacity Azure ML Nanodegree. In this project, two models are created: one using Automated ML and one customized model whose hyperparameters are tuned using HyperDrive. The performance of the two models is then compared and the best performing model deployed. Finally the endpoint produced will be used to get some answers about predictions.
+![alt text](images/capstone-diagram.png)
 
-## Project Set Up and Installation
-*OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
+## Project special Installation
+In this repo I created the following files, which required to run the experiments:
+
+- **automl.ipynb** : It is the notebook file for the AutoML (endpoint python script I written in here used to consume the produced endpoint)
+- **train.py** : A python script that the HyperDrive operates on in order to produce the runs and find the best model.
+- **hyperparameter_tuning.ipynb** : This is the notebook file I used for the HyperDrive.
+- **Divorce-Predictor-Dataset.csv** : This is the dataset I used from here. The following came out from the running of the experiments
+- **conda_dependencies.yml** : This is the environment file I downloaded from the Azure ML Studio.
+- **hyper-model.pkl** : This is the best model from the HyperDrive I downloaded from Azure ML studio.
+- **model.pkl** : This is the best model from the AutoML I downloaded from Azure ML studio.
+- **hyper_scoring.py** : This is the scrore result from the HyperDrive training
+- **automl_scoring.py** : This is the scrore result from the AutoML training
 
 ## Dataset
 
 ### Overview
-*TODO*: Explain about the data you are using and where you got it from.
+The dataset I used is [Divorce-Predictor-Dataset.csv](https://www.kaggle.com/datasets/rabieelkharoua/split-or-stay-divorce-predictor-dataset/data) from Kaggle. it's The Divorce Predictors Scale (DPS) dataset which is derived from a study focused on predicting divorce using the DPS within the framework of Gottman couples therapy. The dataset comprises responses collected from participants, consisting of both divorced and married couples.
+Attributes:
+
+### The dataset features the following attributes ### 
+
+- Participant ID: Unique identifier for each participant.
+- Marital Status: Indicates whether the participant is divorced or married.
+- Demographic Information: Includes age, gender, education level, and other relevant demographic factors.
+- Responses to DPS Items: Each item of the DPS is represented as a separate attribute, providing insight into the participants' perceptions and behaviors related to marital dynamics.
+
+-There are 54 questions, labeled Atr1 to Atr54, corresponding to Question 1 to Question 54.
+
+-The last column is the status column, which indicates whether the individual is 'Married' or 'Divorced'. It is represented by a Boolean variable, where 'Married' is represented as '1' and 'Divorced' as '0'."
+
+### Data Statistics ###
+![alt text](<images/dataset - distribution.png>)
 
 ### Task
-*TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
+the dataset released by the researchers includes ONLY the questions, responses, and the marital status (married or divorced).
+
+[Survey questions](https://www.kaggle.com/datasets/rabieelkharoua/split-or-stay-divorce-predictor-dataset/data) can see in here from kanggle 
 
 ### Access
-*TODO*: Explain how you are accessing the data in your workspace.
+
+- The Azure Auto ML notebook reads the data using Dataset.Tabular.from_delimeted_files() and registers is as an Azure tabular dataset in the workspace.
+
+- For the hyperparameter tuning, the data is loaded into the workspace using TabularDataFactory in the train.py script.
 
 ## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
+## Automated ML configuration ##
+Overview of the AutoML settings and configuration used for this experiment:
 
 ### Results
 *TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?

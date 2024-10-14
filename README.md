@@ -136,22 +136,22 @@ Bayesian sampling is based on the Bayesian optimization algorithm. It picks samp
 
 ## Defining a Model Training
 
-In this project,I used Logistric Regression algorithm from the SKLearn framework in conjuction with hyperDrive for hyperparameter tuning. There are three hyperparamters for this experiment: C, max_iter and solver.
+In this project,I used Logistric Regression algorithm from the SKLearn framework in conjuction with hyperDrive for hyperparameter tuning. There are three hyperparamters for this experiment: **C, max_iter and solver**.
 
 ## Defining the Hyperparamters tuning
 
-I use Logistric Regression algorithm from the SKLearn framework in conjuction with hyperDrive for hyperparameter tuning. There are three hyperparamters for this experiment: C, max_iter and solver: 
+I use Logistric Regression algorithm from the SKLearn framework in conjuction with hyperDrive for hyperparameter tuning. There are three hyperparamters for this experiment: **C, max_iter and solver**: 
 
 - **C** (Inverse of regularization strength): is the inverse regularization strength (Default: 1.0). C controls the inverse of the regularization strength. A smaller value of C means stronger regularization (to prevent overfitting). In simpler terms:
- + Large C: Weak regularization (the model fits the training data closely).
- + Small C: Strong regularization (the model is more general, avoiding overfitting).
+        + Large C: Weak regularization (the model fits the training data closely).
+        + Small C: Strong regularization (the model is more general, avoiding overfitting).
 
 - **max_iter** (Maximum number of iterations): is the maximum iteration to converge for the SKLearn Logistic Regression (Default: 100). This defines the maximum number of iterations allowed for the algorithm to converge. In iterative algorithms like gradient-based optimization, this sets a limit to prevent infinite loops. If the model doesn't converge within max_iter iterations, it will stop, potentially with a warning that convergence wasn't achieved.
 
 - **solver** (Algorithm to train the model): Default: 'lbfgs'. This specifies the optimization algorithm used for training. Different solvers can be used depending on the problem type, size, and whether it's a classification or regression task. Common solvers for models like logistic regression include:
-+ **lbfgs**: Limited-memory Broyden–Fletcher–Goldfarb–Shanno algorithm, suited for smaller datasets and supports l2 regularization.
-+ **sag and saga**: Stochastic solvers that are good for large datasets.
-+ **liblinear**: A linear solver that's useful for small datasets and sparse data.
+        + **lbfgs**: Limited-memory Broyden–Fletcher–Goldfarb–Shanno algorithm, suited for smaller datasets and supports l2 regularization.
+        + **sag and saga**: Stochastic solvers that are good for large datasets.
+        + **liblinear**: A linear solver that's useful for small datasets and sparse data.
 
 ## Choose parameter sampling
 

@@ -197,39 +197,65 @@ I'm ready to configure a run configuration object, and specify the primary metri
                                     )
 
 ## Hyperparameter Results
-# Experiment Running
+### Experiment Running
 ![alt text](<images/HyperDrive/5. experiment running success.png>)
 
-# Training model and Run Detail
+### Training model and Run Detail
 ![alt text](images/HyperDrive/Hyper_Rundetail.png)
 ![alt text](<images/HyperDrive/HyperDrive_Running Success.png>)
 
-# The Best model
+### The Best model
 ![alt text](<images/HyperDrive/6. best model.png>)
 ![alt text](<images/HyperDrive/best model.png>)
 ![alt text](<images/HyperDrive/7. best model - Result.png>)
 
-## Model Deployment for HyperDrive
+## Model Deployment with HyperDrive
 
-# Retrieve the Best Model from HyperDrive
+### Retrieve the Best Model from HyperDrive
 ![alt text](<images/HyperDrive/Retrieve the Best Model from HyperDrive.PNG>)
 
-# Register the Best Model
+### Register the Best Model
 ![alt text](<images/HyperDrive/Hyper - Register model.PNG>)
 
-# Define the Scoring Script and Environment
+### Define the Scoring Script and Environment
 
 To deploy the model, create a scoring script and specify the environment the model will run in. The scoring script (hyhyper_score.py) will handle the inference logic for the model. Scoring Script (score.py):
 ![alt text](<images/HyperDrive/hyper core.PNG>)
 
 
-# Deploy the Model as a Web Service
+### Deploy the Model as a Web Service
 ![alt text](<images/HyperDrive/deploy services - success 1.pngg>)
 
-# Endpoint Sevices: Enable Loggin, Swagger URL and REST Endpoints
+### Endpoint Sevices: Enable Loggin, Swagger URL and REST Endpoints
 ![alt text](<images/HyperDrive/Enable login_REST_Swagger.png>)
 
-## Screen Recording
+## Model Deployment with AutoML
+
+### Retrieve the Best Model from HyperDrive
+![alt text](<images/AutoML/Retrieve the Best Model.PNG>)
+
+### Register the Best Model
+![alt text](<images/AutoML/Registe model.PNG>)
+
+### Define the Scoring Script and Environment
+
+To deploy the model, create a scoring script and specify the environment the model will run in. The scoring script (hyhyper_score.py) will handle the inference logic for the model. Scoring Script (score.py):
+![alt text](<images/HyperDrive/hyper core.PNG>)
+
+
+### Deploy the Model as a Web Service
+![alt text](<images/AutoML/Endpoint Servicess.PNG>)
+
+### Endpoint Sevices: Enable Loggin, Swagger URL and REST Endpoints
+![alt text](<images/AutoML/Endpoint Sevices - success.PNG>)
+![alt text](<images/HyperDrive/Enable login_REST_Swagger.png>)
+
+
+
+### A sample request sent to the endpoint and its response
+![alt text](<images/AutoML/Test Data with REST Request.PNG>)
+
+# Screen Recording
 - Screen cast of AutoML practice: https://www.veed.io/view/462df68c-9dae-4c02-b176-97fa0d2dcec5
 - Screen cast of HyperDriver practice: https://www.veed.io/view/f38a6688-7f9b-48b2-a869-5dc76b086894?panel=share
 

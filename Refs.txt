@@ -1,6 +1,0 @@
-
-https://bakshiharsh55.medium.com/fine-tuning-hyperparameters-using-hyperdrive-in-azure-machine-learning-sdk-f0f86fb5b1f3
-https://github.com/microsoft/MLHyperparameterTuning/blob/master/04_Hyperparameter_Random_Search.ipynb
-https://github.com/microsoft/MLHyperparameterTuning
-https://www.linkedin.com/pulse/tune-hyperparameters-azure-machine-learning-sudhanshu-dwivedi/
-https://www.kaggle.com/datasets/rabieelkharoua/split-or-stay-divorce-predictor-dataset/data

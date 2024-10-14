@@ -39,15 +39,16 @@ Attributes:
 ![alt text](<images/dataset - distribution.png>)
 
 ### Task
-the dataset released by the researchers includes ONLY the questions, responses, and the marital status (married or divorced).
+
+The dataset released by the researchers includes ONLY the questions, responses, and the marital status (married or divorced).
 
 [Survey questions](https://www.kaggle.com/datasets/rabieelkharoua/split-or-stay-divorce-predictor-dataset/data) can see in here from kanggle 
 
 ### Access
 
-- The Azure Auto ML notebook reads the data using Dataset.Tabular.from_delimeted_files() and registers is as an Azure tabular dataset in the workspace.
+- The Azure Auto ML notebook reads the data using **Dataset.Tabular.from_delimeted_files()** and registers is as an Azure tabular dataset in the workspace.
 
-- For the hyperparameter tuning, the data is loaded into the workspace using TabularDataFactory in the train.py script.
+- For the hyperparameter tuning, the data is loaded into the workspace using **TabularDataFactory** in the **hyper_train.py** script.
 
 ## Automated ML
 ## Automated ML configuration ##

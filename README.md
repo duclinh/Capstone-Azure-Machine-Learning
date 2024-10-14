@@ -209,6 +209,13 @@ I'm ready to configure a run configuration object, and specify the primary metri
 ![alt text](<images/HyperDrive/best model.png>)
 ![alt text](<images/HyperDrive/7. best model - Result.png>)
 
+# Compare Model Performance
+
+| Model        | Accurancy |
+| ------------ | --------- |
+| Automated ML | 0.9882    |
+| HyperDrive   | 0.9411    |
+
 ## Model Deployment with HyperDrive
 
 ### Retrieve the Best Model from HyperDrive
@@ -242,22 +249,22 @@ To deploy the model, create a scoring script and specify the environment the mod
 To deploy the model, create a scoring script and specify the environment the model will run in. The scoring script (hyhyper_score.py) will handle the inference logic for the model. Scoring Script (score.py):
 ![alt text](<images/HyperDrive/hyper core.PNG>)
 
-
 ### Deploy the Model as a Web Service
 ![alt text](<images/AutoML/Endpoint Servicess.PNG>)
 
-### Endpoint Sevices: Enable Loggin, Swagger URL and REST Endpoints
+### Endpoint Services: Enable Loggin, Swagger URL and REST Endpoints
 ![alt text](<images/AutoML/Endpoint Sevices - success.PNG>)
-![alt text](<images/HyperDrive/Enable login_REST_Swagger.png>)
-
-
 
 ### A sample request sent to the endpoint and its response
 ![alt text](<images/AutoML/Test Data with REST Request.PNG>)
 
+
 # Screen Recording
-- Screen cast of AutoML practice: https://www.veed.io/view/462df68c-9dae-4c02-b176-97fa0d2dcec5
-- Screen cast of HyperDriver practice: https://www.veed.io/view/f38a6688-7f9b-48b2-a869-5dc76b086894?panel=share
+- The screencast of the project demo with AutoML can be viewed (2:20): https://www.veed.io/view/462df68c-9dae-4c02-b176-97fa0d2dcec5
+- The screencast of the project demo with HyperDriver can be viewed (2:55): https://www.veed.io/view/f38a6688-7f9b-48b2-a869-5dc76b086894?panel=share
 
 ## Standout Suggestions
 *TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
+- Using wider ranging hyperparameter sampling in the scikit-learn pipeline
+- Enable Deep Learning in Classification while creating the AutoML experiment.
+- Perform data preprocessing such as feature selection by observing the influence of features on different models.

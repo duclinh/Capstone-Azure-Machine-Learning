@@ -224,7 +224,7 @@ To deploy the model, create a scoring script and specify the environment the mod
 
 
 ### Deploy the Model as a Web Service
-![alt text](<images/HyperDrive/deploy services - success 1.pngg>)
+![alt text](<images/HyperDrive/deploy services - success 1.png>)
 
 ### Endpoint Sevices: Enable Loggin, Swagger URL and REST Endpoints
 ![alt text](<images/HyperDrive/Enable login_REST_Swagger.png>)

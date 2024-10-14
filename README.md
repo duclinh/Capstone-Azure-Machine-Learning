@@ -119,7 +119,7 @@ The AutoML experiment run generated **VotingEnsemble** algorithm as the best mod
 ![alt text](<images/AutoML/6 RunDetails.PNG>)
 
 
-## Hyperparameter 
+## Hyperparameter Tuning 
 
 ## Hyperparameter space
 
@@ -196,13 +196,38 @@ I'm ready to configure a run configuration object, and specify the primary metri
                                      max_total_runs=20,                                     
                                     )
 
-### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
+## Hyperparameter Results
+# Experiment Running
+![alt text](<images/HyperDrive/5. experiment running success.png>)
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+# Training model and Run Detail
+![alt text](images/HyperDrive/Hyper_Rundetail.png)
+![alt text](<images/HyperDrive/HyperDrive_Running Success.png>)
 
-## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+# The Best model
+![alt text](<images/HyperDrive/6. best model.png>)
+![alt text](<images/HyperDrive/best model.png>)
+![alt text](<images/HyperDrive/7. best model - Result.png>)
+
+## Model Deployment for HyperDrive
+
+# Retrieve the Best Model from HyperDrive
+![alt text](<images/HyperDrive/Retrieve the Best Model from HyperDrive.PNG>)
+
+# Register the Best Model
+![alt text](<images/HyperDrive/Hyper - Register model.PNG>)
+
+# Define the Scoring Script and Environment
+
+To deploy the model, create a scoring script and specify the environment the model will run in. The scoring script (hyhyper_score.py) will handle the inference logic for the model. Scoring Script (score.py):
+![alt text](<images/HyperDrive/hyper core.PNG>)
+
+
+# Deploy the Model as a Web Service
+![alt text](<images/HyperDrive/deploy services - success 1.pngg>)
+
+# Endpoint Sevices: Enable Loggin, Swagger URL and REST Endpoints
+![alt text](<images/HyperDrive/Enable login_REST_Swagger.png>)
 
 ## Screen Recording
 - Screen cast of AutoML practice: https://www.veed.io/view/462df68c-9dae-4c02-b176-97fa0d2dcec5

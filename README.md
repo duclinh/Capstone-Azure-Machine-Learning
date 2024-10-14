@@ -258,7 +258,6 @@ To deploy the model, create a scoring script and specify the environment the mod
 ### A sample request sent to the endpoint and its response
 ![alt text](<images/AutoML/Test Data with REST Request.PNG>)
 
-
 # Screen Recording
 - The screencast of the project demo with AutoML can be viewed (2:20): https://www.veed.io/view/462df68c-9dae-4c02-b176-97fa0d2dcec5
 - The screencast of the project demo with HyperDriver can be viewed (2:55): https://www.veed.io/view/f38a6688-7f9b-48b2-a869-5dc76b086894?panel=share

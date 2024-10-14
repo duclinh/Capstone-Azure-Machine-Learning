@@ -21,7 +21,6 @@ In this repo I created the following files, which required to run the experiment
 
 ### Overview
 The dataset I used is [Divorce-Predictor-Dataset.csv](https://www.kaggle.com/datasets/rabieelkharoua/split-or-stay-divorce-predictor-dataset/data) from Kaggle. it's The Divorce Predictors Scale (DPS) dataset which is derived from a study focused on predicting divorce using the DPS within the framework of Gottman couples therapy. The dataset comprises responses collected from participants, consisting of both divorced and married couples.
-Attributes:
 
 ### The dataset features the following attributes ### 
 
@@ -87,7 +86,7 @@ The run details of the AutomatedML run are as below:
 ![alt text](<images/AutoML/2. the Best model.PNG>)
 
 ### Results
-*TODO*: What are the results you got with your automated ML model? 
+
 The AutoML experiment run generated **VotingEnsemble** algorithm as the best model with:
 
 - **'accuracy': 0.9882352941176471**,
@@ -111,41 +110,89 @@ The AutoML experiment run generated **VotingEnsemble** algorithm as the best mod
 
 ![alt text](<images/AutoML/5. Model metric - Feature Importaince - 1.PNG>)
 
-**The Top Features by Their importance - for Class: 1**
+**The Top Features by Their importance**
 
 ![alt text](<images/AutoML/5. Model metric - Feature Importaince.PNG>)
 
-What were the parameters of the model? How could you have improved it?
-
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 ## The RunDetails widget to show the different experiments.
 
 ![alt text](<images/AutoML/6 RunDetails.PNG>)
 
 
+## Hyperparameter 
 
-## Hyperparameter Tuning
+## Hyperparameter space
+
+There are three types of sampling in the hyperparameter space:
+
+### Random Sampling
+Random sampling supports discrete and continuous hyperparameters. It supports early termination of low-performance runs. In random sampling, hyperparameter values are randomly selected from the defined search space.
+
+### Grid Sampling
+Grid sampling supports discrete hyperparameters. Use grid sampling if you can budget to exhaustively search over the search space. Supports early termination of low-performance runs. Performs a simple grid search over all possible values. Grid sampling can only be used with choice hyperparameters.
+
+### Bayesian Sampling
+Bayesian sampling is based on the Bayesian optimization algorithm. It picks samples based on how previous samples performed, so that new samples improve the primary metric. Bayesian sampling is recommended if you have enough budget to explore the hyperparameter space. For best results, recommend a maximum number of runs greater than or equal to 20 times the number of hyperparameters being tuned.
+
 ## Defining a Model Training
 
-I use Logistric Regression algorithm from the SKLearn framework in conjuction with hyperDrive for hyperparameter tuning. There are two hyperparamters for this experiment, C and max_iter. C is the inverse regularization strength whereas max_iter is the maximum iteration to converge for the SKLearn Logistic Regression.
+In this project,I used Logistric Regression algorithm from the SKLearn framework in conjuction with hyperDrive for hyperparameter tuning. There are three hyperparamters for this experiment: C, max_iter and solver.
 
 ## Defining the Hyperparamters tuning
 
-I use Logistric Regression algorithm from the SKLearn framework in conjuction with hyperDrive for hyperparameter tuning. There are two hyperparamters for this experiment, C and max_iter. 
-- **C** is the inverse regularization strength 
-- **max_iter** is the maximum iteration to converge for the SKLearn Logistic Regression.
+I use Logistric Regression algorithm from the SKLearn framework in conjuction with hyperDrive for hyperparameter tuning. There are three hyperparamters for this experiment: C, max_iter and solver: 
 
-We have used random parameter sampling to sample over a discrete set of values. Random parameter sampling is great for discovery and getting hyperparameter combinations that you would not have guessed intuitively, although it often requires more time to execute.
-We have used random parameter sampling to sample over a discrete set of values. Random parameter sampling is great for discovery and getting hyperparameter combinations that you would not have guessed intuitively, although it often requires more time to execute.
+- **C** (Inverse of regularization strength): is the inverse regularization strength (Default: 1.0). C controls the inverse of the regularization strength. A smaller value of C means stronger regularization (to prevent overfitting). In simpler terms:
+ + Large C: Weak regularization (the model fits the training data closely).
+ + Small C: Strong regularization (the model is more general, avoiding overfitting).
+
+- **max_iter** (Maximum number of iterations): is the maximum iteration to converge for the SKLearn Logistic Regression (Default: 100). This defines the maximum number of iterations allowed for the algorithm to converge. In iterative algorithms like gradient-based optimization, this sets a limit to prevent infinite loops. If the model doesn't converge within max_iter iterations, it will stop, potentially with a warning that convergence wasn't achieved.
+
+- **solver** (Algorithm to train the model): Default: 'lbfgs'. This specifies the optimization algorithm used for training. Different solvers can be used depending on the problem type, size, and whether it's a classification or regression task. Common solvers for models like logistic regression include:
++ **lbfgs**: Limited-memory Broyden–Fletcher–Goldfarb–Shanno algorithm, suited for smaller datasets and supports l2 regularization.
++ **sag and saga**: Stochastic solvers that are good for large datasets.
++ **liblinear**: A linear solver that's useful for small datasets and sparse data.
+
+## Choose parameter sampling
+
+Choosing a Sampling Strategy:
+- **Grid Sampling**: Use when the parameter space is small and you want to evaluate all possible combinations.
+- **Random Sampling**: Use when you have a large space and want to explore quickly.
+- **Bayesian Sampling**: Use when you need efficiency and have a costly evaluation function.
+- **Quasi-Random Sampling**: Use for uniform coverage when you have moderate computational resources.
+- **Adaptive Sampling (Hyperband)**: Use when you need to dynamically allocate resources and prioritize promising configurations.
+
+I have used **Random parameter sampling** to sample over a discrete set of values. Random parameter sampling is great for discovery and getting hyperparameter combinations that you would not have guessed intuitively, although it often requires more time to execute.
+
+    # Specify parameter sampler
+    sample_space = {
+        'C': choice(0.01, 0.1, 1, 10, 100),
+        'max_iter' : choice(50,75,100,125,150,175,200),
+        'solver' : choice('liblinear','sag','lbfgs', 'saga')
+    }
+    # Specify the sampling pramater
+    param_sampling = RandomParameterSampling(sample_space)
 
 
+# Define an early termnination policy
 
 After that, I will define an early termnination policy. The BanditPolicy basically states to check the job every 1 iterations. If the primary metric (defined later) falls outside of the top 20% range, Azure ML terminate the job. This saves us from continuing to explore hyperparameters that don't show promise of helping reach our target metric.
 
-early_termination_policy = BanditPolicy(evaluation_interval=1, slack_factor=0.2)
+    early_termination_policy = BanditPolicy(evaluation_interval=1, slack_factor=0.2)
 
-I'm ready to configure a run configuration object, and specify the primary metric validation_acc that's recorded in your training runs. I also set the number of samples to 50, and maximal concurrent job to 4, which is the same as the number of nodes in our computer cluster.
+# Create hyperdrive config
 
+I'm ready to configure a run configuration object, and specify the primary metric **Accuracy** that's recorded in your training runs. I also set the number of samples to 20, and maximal concurrent job to 4, which is the same as the number of nodes in our computer cluster.
+
+    hyperdrive_run_config = HyperDriveConfig(
+                                     hyperparameter_sampling=param_sampling,
+                                     primary_metric_name='Accuracy',
+                                     primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
+                                     policy=early_termination_policy,
+                                     run_config=src,
+                                     max_concurrent_runs=4,
+                                     max_total_runs=20,                                     
+                                    )
 
 ### Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?

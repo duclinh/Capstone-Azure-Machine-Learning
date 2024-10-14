@@ -53,6 +53,20 @@ The dataset released by the researchers includes ONLY the questions, responses, 
 ## Automated ML
 ## Automated ML configuration ##
 Overview of the AutoML settings and configuration used for this experiment:
+ 
+| Auto ML Configuration      | Value                | Explanation                                                                                                             |
+| -------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| experiment_timeout_minutes | 20                   | Maximum duration in minutes that all iterations can take before the experiment is terminated                            |
+| max_concurrent_iterations  | 4                    | Represents the maximum number of iterations that would be executed in parallel                                          |
+| primary_metric             | accuracy             | This is the metric that the AutoML runs will optimize for when selecting the best performing model                      |
+| compute_target             | cpu_cluster(created) | The compute target on which we will run the experiment                                                                  |
+| task                       | classification       | This is the nature of our machine learning task                                                                         |
+| training_data              | dataset(imported)    | The training data to be used within the experiment                                                                      |
+| label_column_name          | Class                | The name of the label column                                                                                            |
+| path                       | ./project-folder     | This is the path to the project folder                                                                                  |
+| enable_early_stopping      | TRUE                 | Enable early termination if the score is not improving                                                                  |
+| featurization              | auto                 | Indicates if featurization step should be done automatically or not, or whether customized featurization should be used |
+| debug_log                  | automl_errors.log    | The log file to write debug information to                                                                              |
 
 ### Results
 *TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
